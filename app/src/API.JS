@@ -1,0 +1,3 @@
+export const mainPage = "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=947484d3320b1dddd6ec6a5e658b33d1&format=json"
+export const detailPage = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Cher&api_key=947484d3320b1dddd6ec6a5e658b33d1&format=json&mbid=`
+export const searchPage = `http://ws.audioscrobbler.com/2.0/?method=track.search&api_key=947484d3320b1dddd6ec6a5e658b33d1&format=json&track=`
