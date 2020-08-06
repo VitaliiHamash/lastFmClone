@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchDetail } from './actions/detail';
 import { detailPage } from './API.JS'
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import LoaderComponent from './components/LoaderComponent'
 
 class DetailScreen extends Component {
     
@@ -15,12 +16,13 @@ class DetailScreen extends Component {
     
     render() {
         return this.props.detail.loading == true ? (
-                <Text style={{ backgroundColor:"#1b1b49",
-                            height:"100%",
-                            color:"white" }}
-                >
-                Loading
-                </Text>
+            <View style = {{
+                backgroundColor:"#1b1b49",
+                height:"100%"
+              }}
+            >
+                <LoaderComponent />
+            </View>
                 ) :  this.props.detail.error ? (
                     <Text>{this.props.detail.error}</Text>
                 ) : (

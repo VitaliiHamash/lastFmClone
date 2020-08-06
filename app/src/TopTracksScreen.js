@@ -8,6 +8,7 @@ import {mainPage} from './API.JS'
 import { connect } from 'react-redux';
 import { fetchUsers } from './actions/user';
 import { StyleSheet } from 'react-native';
+import LoaderComponent from './components/LoaderComponent'
 
 const styles = StyleSheet.create({
   button:{
@@ -67,10 +68,13 @@ class TopTracksScreen extends React.Component {
   )
   render() {
     return this.props.list.loading == true ? (
-          <Text style={{backgroundColor:"#1b1b49",
-                        height:"100%",
-                        color:"white"}}>Loading
-          </Text>
+          <View style = {{
+                          backgroundColor:"#1b1b49",
+                          height:"100%"
+                        }}
+          >
+            <LoaderComponent />
+          </View>
       ) : this.props.list.error ? (
           <Text>{this.props.list.error}</Text>
       ) : (

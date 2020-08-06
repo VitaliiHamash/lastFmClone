@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Text, TextInput, SafeAreaView, View,ScrollView, FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements'
 import SvgComponent from './components/SvgComponent'
+import LoaderComponent from './components/LoaderComponent'
 
 class SearchScreen extends Component {
   constructor(props){
@@ -65,11 +66,13 @@ class SearchScreen extends Component {
                       />
                     </View>
                     {this.props.search.loading == true ? (
-                      <Text style={{backgroundColor:"#1b1b49",
-                                    height:"100%",
-                                    color:"white"}}>
-                        Loading
-                      </Text>
+                          <View style = {{
+                                          backgroundColor:"#1b1b49",
+                                          height:"100%"
+                                        }}
+                          >
+                              <LoaderComponent />
+                          </View>
                     ) : this.props.search.error ? (
                           <Text>{this.props.search.error}</Text>
                     ) : (
