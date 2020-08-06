@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
-import { NavigationContainer } from '@react-navigation/native';
-import{StatusBar} from 'react-native'
 
-import coctailList from './app/src/coctailList'
-import filters from './app/src/filters'
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native'
+
+import TopTracksScreen from './app/src/TopTracksScreen'
+import SearchScreen from './app/src/SearchScreen'
 import DetailScreen from './app/src/DetailScreen'
 
-import {createStackNavigator} from '@react-navigation/stack'
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-
+import { createStackNavigator } from '@react-navigation/stack'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
-
 const Stack = createStackNavigator();
-
 
 const StackNavigation = () => {
   return (
@@ -23,8 +21,8 @@ const StackNavigation = () => {
       headerShown: false
     }}>
         <Stack.Screen
-        name="Drinks"
-        component={coctailList}
+        name="Top Tracks"
+        component={TopTracksScreen}
     
        />
       <Stack.Screen
@@ -34,7 +32,7 @@ const StackNavigation = () => {
           title: "Detail"
           }}
       />
-</Stack.Navigator>
+  </Stack.Navigator>
   )
 }
 
@@ -48,27 +46,31 @@ export default class App extends Component {
                                   initialRouteName="Home"
                                   activeColor="#f0edf6"
                                   inactiveColor="#3e2465"
-                                  barStyle={{ backgroundColor: '#fa926f' }}>
-                                              <MaterialBottomTabs.Screen
-                                              name="Food Form"
-                                              children={StackNavigation}
-                                              options={{tabBarLabel: 'Главная',
-                                              tabBarIcon: () => (
-                                                  <Icon style={[{ color: '#1b1b49' }]} size={19} name={'play'} />
-                                              ),}}
-                                              />
-                                              
-                                              <MaterialBottomTabs.Screen
-                                              name="Food List"
-                                              component={filters}
-                                              options={{tabBarLabel: 'Поиск треков',
-                                              tabBarIcon: () => (
-                                                  <Icon style={[{ color: '#1b1b49' }]} size={20} name={'music'} />
-                                              ),}}
-                                              />
-                          </MaterialBottomTabs.Navigator>
-                        
-      </NavigationContainer>
+                                  barStyle={{backgroundColor:'#fa926f'}}
+                      >
+                          <MaterialBottomTabs.Screen
+                            name="Main"
+                            children={StackNavigation}
+                            options={{tabBarLabel:'Главная',
+                              tabBarIcon: () => (
+                                  <Icon style={[{ color:'#1b1b49'}]}
+                                        size={19}
+                                        name={'play'} />
+                              ),
+                            }}
+                          />
+                          
+                          <MaterialBottomTabs.Screen
+                            name="Search"
+                            component={SearchScreen}
+                            options={{tabBarLabel: 'Поиск треков',
+                            tabBarIcon: () => (
+                                <Icon style={[{ color: '#1b1b49' }]} size={20} name={'music'} />
+                              ),
+                            }}
+                          />
+                    </MaterialBottomTabs.Navigator>
+        </NavigationContainer>
     )
   }
 }
